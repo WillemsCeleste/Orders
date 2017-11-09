@@ -18,7 +18,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat(script: './gradlew.bat test -Dspring.profiles.active=jenkins', returnStatus:true)
+                bat(script: './gradlew.bat test -P springProfiles=jenkins', returnStatus:true)
             }
         }
 
