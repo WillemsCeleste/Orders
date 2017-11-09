@@ -24,11 +24,6 @@ public class Customer {
     private Customer() {
     }
 
-    public Customer(String name, String lastName) {
-        this.name = name;
-        this.lastName = lastName;
-    }
-
     public Customer( String name, String lastName, String email, String adress, String phoneNumber) {
         this.name = name;
         this.lastName = lastName;
@@ -55,10 +50,6 @@ public class Customer {
 
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public int getId() {
-        return id;
     }
 
     @Override
