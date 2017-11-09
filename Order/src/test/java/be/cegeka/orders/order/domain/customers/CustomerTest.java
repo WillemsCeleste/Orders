@@ -14,12 +14,7 @@ private Customer customer;
 
     @Before
     public void setUp() throws Exception {
-        customer = new Customer(1,"Ralphie", "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
-    }
-
-    @Test
-    public void getId_shouldReturnId() throws Exception {
-        assertThat(customer.getId()).isEqualTo(1);
+        customer = new Customer("Ralphie", "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
     }
 
     @Test

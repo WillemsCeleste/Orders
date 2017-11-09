@@ -15,4 +15,7 @@ public class CustomerRepository {
         return entityManager.createQuery("select c from Customer c" , Customer.class).getResultList();
     }
 
+    public void addCustomer(String name, String lastName, String emailAdress, String adress, String phoneNumber) {
+        entityManager.persist(new Customer(name, lastName, emailAdress, adress, phoneNumber));
+    }
 }
