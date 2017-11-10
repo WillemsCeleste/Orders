@@ -209,7 +209,7 @@ public class ItemTest {
                 .withDescription("Red Hug")
                 .withId(10)
                 .withName("Appel")
-                .withSellingPrice(new BigDecimal(0.0))
+                .withSellingPrice(null)
                 .build()
         );
     }
@@ -220,13 +220,13 @@ public class ItemTest {
                 .withDescription("Red Hug")
                 .withId(10)
                 .withName("Appel")
-                .withSellingPrice(new BigDecimal(0.0))
+                .withSellingPrice(null)
                 .build())
                 .isEqualTo(aItem()
                         .withDescription("Red Hug")
                         .withId(10)
                         .withName("Appel")
-                        .withSellingPrice(new BigDecimal(0.0))
+                        .withSellingPrice(null)
                         .build()
                 );
     }
@@ -237,7 +237,7 @@ public class ItemTest {
                 .withDescription("Red Hug")
                 .withId(10)
                 .withName("Appel")
-                .withSellingPrice(new BigDecimal(0.0))
+                .withSellingPrice(null)
                 .build())
                 .isNotEqualTo(aItem()
                         .withDescription("Red Hug")
