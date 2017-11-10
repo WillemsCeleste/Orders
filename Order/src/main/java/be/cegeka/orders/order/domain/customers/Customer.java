@@ -1,6 +1,8 @@
 package be.cegeka.orders.order.domain.customers;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "CUSTOMERS")
@@ -20,6 +22,10 @@ public class Customer {
     private String adress;
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
+
+    @OneToMany
+    @JoinColumn(name = "USER_ORDERS")
+    private List<Object> userOrders = new ArrayList<>();
 
     private Customer() {
     }

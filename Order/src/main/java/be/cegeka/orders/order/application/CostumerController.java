@@ -15,11 +15,6 @@ public class CostumerController {
     @Inject
     private CustomerService customerService;
 
-    @GetMapping
-    public String testGet(){
-        return "Eureka";
-    }
-
     @PostMapping
     public void addCustomer(@RequestParam(value = "name", required = true) String name,
                             @RequestParam(value = "lastName", required = true) String lastName,
