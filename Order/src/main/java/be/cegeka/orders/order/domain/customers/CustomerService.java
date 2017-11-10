@@ -10,6 +10,6 @@ public class CustomerService {
     private CustomerRepository customerRepository;
 
     public void addCustomer(String name, String lastName, String emailAdress, String adress, String phoneNumber) {
-        customerRepository.addCustomer(name, lastName, emailAdress, adress, phoneNumber);
+        customerRepository.addCustomer(new Customer(name, lastName, emailAdress, adress, phoneNumber));
     }
 }

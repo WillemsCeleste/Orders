@@ -23,9 +23,9 @@ public class Customer {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    @OneToMany
-    @JoinColumn(name = "USER_ORDERS")
-    private List<Object> userOrders = new ArrayList<>();
+//    @OneToMany
+//    @JoinColumn(name = "USER_ORDERS")
+//    private List<Object> userOrders = new ArrayList<>();
 
     private Customer() {
     }

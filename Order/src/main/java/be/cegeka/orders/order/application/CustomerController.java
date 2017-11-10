@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 @RestController
 @RequestMapping(path = "/customer")
 @Transactional
-public class CostumerController {
+public class CustomerController {
 
     @Inject
     private CustomerService customerService;
