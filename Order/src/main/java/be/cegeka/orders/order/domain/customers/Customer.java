@@ -58,6 +58,33 @@ public class Customer {
         return phoneNumber;
     }
 
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//
+//        Customer customer = (Customer) o;
+//
+//        if (id != customer.id) return false;
+////        if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
+////        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
+////        if (email != null ? !email.equals(customer.email) : customer.email != null) return false;
+////        if (adress != null ? !adress.equals(customer.adress) : customer.adress != null) return false;
+//        return phoneNumber != null ? phoneNumber.equals(customer.phoneNumber) : customer.phoneNumber == null;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = id;
+//        result = 31 * result + (name != null ? name.hashCode() : 0);
+//        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+//        result = 31 * result + (email != null ? email.hashCode() : 0);
+//        result = 31 * result + (adress != null ? adress.hashCode() : 0);
+//        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
+//        return result;
+//    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,22 +92,11 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        if (id != customer.id) return false;
-//        if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
-//        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
-//        if (email != null ? !email.equals(customer.email) : customer.email != null) return false;
-//        if (adress != null ? !adress.equals(customer.adress) : customer.adress != null) return false;
-        return phoneNumber != null ? phoneNumber.equals(customer.phoneNumber) : customer.phoneNumber == null;
+        return id == customer.id;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (adress != null ? adress.hashCode() : 0);
-        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
-        return result;
+        return id;
     }
 }
