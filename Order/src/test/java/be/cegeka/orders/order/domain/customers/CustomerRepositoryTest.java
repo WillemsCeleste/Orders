@@ -33,11 +33,19 @@ public class CustomerRepositoryTest {
 
     @Before
     public void setupDatabase() {
-        seppe = new Customer("Seppe", "Gielen");
-        johan = new Customer("Johan", "Vdw");
+        seppe = new Customer("Seppe", "Gielen","seppe@gmail.com","hasseltWhatever", "089 7331");
+        johan = new Customer("Johan", "Vdw", "johan@gmail.com","cegekaVille", "016987456");
 
         entityManager.persist(seppe);
         entityManager.persist(johan);
+    }
+
+    @Test
+    public void addCustomer_shouldAddCustomer() throws Exception {
+        Customer testCustomer = new Customer("naam","achternaam", "email", "adres","nummer");
+        customerRepository.addCustomer("naam","achternaam", "email", "adres","nummer");
+        assertThat( customerRepository.getAll() ).containsOnly(seppe,johan,testCustomer);
+
     }
 
     @Test
