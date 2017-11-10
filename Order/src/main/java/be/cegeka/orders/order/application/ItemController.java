@@ -20,8 +20,8 @@ public class ItemController {
     private ItemService itemService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Item addItem(@RequestBody Item item){
-        return itemService.addItem(item);
+    public Item addItem(@RequestBody ItemDto itemDto){
+        return itemService.addItem(itemDto);
 
     }
 }

@@ -25,17 +25,17 @@ public class ItemControllerTest {
     @Mock
     private ItemService itemService;
 
-    private Item item;
+    private ItemDto itemDto;
 
     @Before
     public void setUp() throws Exception {
-        item = new Item("Nicky", "Is not really an item, Jerk", new BigDecimal(2.2));
+        itemDto = new ItemDto("Nicky", "Is not really an item, Jerk", new BigDecimal(2.2));
 
     }
 
     @Test
     public void addItem_shouldGoToItemService() throws Exception {
-        itemController.addItem(item);
-        verify(itemService).addItem(item);
+        itemController.addItem(itemDto);
+        verify(itemService).addItem(itemDto);
     }
 }

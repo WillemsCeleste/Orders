@@ -10,7 +10,7 @@ public class ItemRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public ItemRepository() {
+    private ItemRepository() {
     }
 
     public Item addItem(Item item) {
