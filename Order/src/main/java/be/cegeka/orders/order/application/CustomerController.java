@@ -10,15 +10,10 @@ import javax.transaction.Transactional;
 @RestController
 @RequestMapping(path = "/customer")
 @Transactional
-public class CostumerController {
+public class CustomerController {
 
     @Inject
     private CustomerService customerService;
-
-    @GetMapping
-    public String testGet(){
-        return "Eureka";
-    }
 
     @PostMapping
     public void addCustomer(@RequestParam(value = "name", required = true) String name,

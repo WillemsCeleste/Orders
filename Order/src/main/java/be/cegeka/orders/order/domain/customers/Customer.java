@@ -1,6 +1,8 @@
 package be.cegeka.orders.order.domain.customers;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "CUSTOMERS")
@@ -20,6 +22,10 @@ public class Customer {
     private String adress;
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
+
+//    @OneToMany
+//    @JoinColumn(name = "USER_ORDERS")
+//    private List<Object> userOrders = new ArrayList<>();
 
     private Customer() {
     }
@@ -60,10 +66,10 @@ public class Customer {
         Customer customer = (Customer) o;
 
         if (id != customer.id) return false;
-        if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
-        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
-        if (email != null ? !email.equals(customer.email) : customer.email != null) return false;
-        if (adress != null ? !adress.equals(customer.adress) : customer.adress != null) return false;
+//        if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
+//        if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
+//        if (email != null ? !email.equals(customer.email) : customer.email != null) return false;
+//        if (adress != null ? !adress.equals(customer.adress) : customer.adress != null) return false;
         return phoneNumber != null ? phoneNumber.equals(customer.phoneNumber) : customer.phoneNumber == null;
     }
 

@@ -43,8 +43,9 @@ public class CustomerRepositoryTest {
     @Test
     public void addCustomer_shouldAddCustomer() throws Exception {
         Customer testCustomer = new Customer("naam","achternaam", "email", "adres","nummer");
-        customerRepository.addCustomer("naam","achternaam", "email", "adres","nummer");
-        assertThat( customerRepository.getAll() ).containsOnly(seppe,johan,testCustomer);
+        customerRepository.addCustomer(testCustomer);
+        assertThat( customerRepository.getAll() ).contains(seppe,johan,testCustomer);
+        assertThat(customerRepository.getAll().size()).isEqualTo(3);
 
     }
 

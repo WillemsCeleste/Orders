@@ -63,22 +63,22 @@ public class CustomerTest {
         assertThat(customer).isNotEqualTo(new Object());
     }
 
-    @Test
-    public void equals_objectWithOtherName_isFalse() throws Exception {
-        Customer expectedFalse = new Customer("Rolphie", "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
-        assertThat(customer).isNotEqualTo(expectedFalse);
-    }
-
-    @Test
-    public void equals_objectWithNullName_isFalse() throws Exception {
-        Customer expectedNullName = new Customer(null, "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
-        assertThat(customer).isNotEqualTo(expectedNullName);
-    }
-
-    @Test
-    public void equals_objectWithBothNullName_isFalse() throws Exception {
-        Customer expectedBothNullName = new Customer(null, null, "ralphie@gmail.com", "diestsestraat 999", "016 320208");
-        assertThat(customer).isNotEqualTo(expectedBothNullName);
-    }
+//    @Test
+//    public void equals_objectWithOtherName_isFalse() throws Exception {
+//        Customer expectedFalse = new Customer("Rolphie", "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
+//        assertThat(customer).isNotEqualTo(expectedFalse);
+//    }
+//
+//    @Test
+//    public void equals_objectWithNullName_isFalse() throws Exception {
+//        Customer expectedNullName = new Customer(null, "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
+//        assertThat(customer).isNotEqualTo(expectedNullName);
+//    }
+//
+//    @Test
+//    public void equals_objectWithBothNullName_isFalse() throws Exception {
+//        Customer expectedBothNullName = new Customer(null, null, "ralphie@gmail.com", "diestsestraat 999", "016 320208");
+//        assertThat(customer).isNotEqualTo(expectedBothNullName);
+//    }
 
 }
