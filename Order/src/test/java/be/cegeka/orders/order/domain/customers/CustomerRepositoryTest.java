@@ -41,6 +41,14 @@ public class CustomerRepositoryTest {
     }
 
     @Test
+    public void addCustomer_shouldAddCustomer() throws Exception {
+        Customer testCustomer = new Customer("naam","achternaam", "email", "adres","nummer");
+        customerRepository.addCustomer("naam","achternaam", "email", "adres","nummer");
+        assertThat( customerRepository.getAll() ).containsOnly(seppe,johan,testCustomer);
+
+    }
+
+    @Test
     public void getAllShouldReturnAll() throws Exception {
         assertThat(customerRepository.getAll()).contains(seppe, johan);
     }
