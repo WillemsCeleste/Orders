@@ -9,8 +9,8 @@ public class ItemService {
     @Inject
     private ItemRepository itemRepository;
 
-    public void addItem(Item item) {
-        itemRepository.addItem(item);
+    public Item addItem(Item item) {
+       return itemRepository.addItem(item);
 
     }
 }

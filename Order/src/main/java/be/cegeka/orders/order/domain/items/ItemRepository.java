@@ -13,7 +13,8 @@ public class ItemRepository {
     public ItemRepository() {
     }
 
-    public void addItem(Item item) {
+    public Item addItem(Item item) {
         entityManager.persist(item);
+        return item;
     }
 }
