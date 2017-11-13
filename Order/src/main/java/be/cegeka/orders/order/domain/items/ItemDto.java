@@ -1,4 +1,4 @@
-package be.cegeka.orders.order.application;
+package be.cegeka.orders.order.domain.items;
 
 import java.math.BigDecimal;
 

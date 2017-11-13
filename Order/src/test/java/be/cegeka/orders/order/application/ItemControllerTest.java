@@ -1,7 +1,7 @@
 package be.cegeka.orders.order.application;
 
 
-import be.cegeka.orders.order.domain.items.Item;
+import be.cegeka.orders.order.domain.items.ItemDto;
 import be.cegeka.orders.order.domain.items.ItemService;
 import org.junit.Before;
 import org.junit.Rule;

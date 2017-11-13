@@ -2,6 +2,7 @@ package be.cegeka.orders.order.domain.customers;
 
 import be.cegeka.orders.order.domain.orders.Order;
 
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,10 @@ public class Customer {
         this.email = email;
         this.adress = adress;
         this.phoneNumber = phoneNumber;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void addOrderToThisCustomer(Order order){

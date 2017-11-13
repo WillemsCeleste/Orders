@@ -1,7 +1,5 @@
 package be.cegeka.orders.order.domain.items;
 
-import be.cegeka.orders.order.application.ItemController;
-import be.cegeka.orders.order.application.ItemDto;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -12,7 +10,6 @@ import org.mockito.junit.MockitoRule;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 public class ItemServiceTest {
