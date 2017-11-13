@@ -1,8 +1,10 @@
 package be.cegeka.orders.order.domain.orders;
 
+import be.cegeka.orders.order.domain.customers.Customer;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -11,11 +13,13 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int orderId;
     @Column(name = "ORDER_DATE")
     private Date date;
     @Column(name = "TOTAL_PRICE")
     private BigDecimal totalPrice;
+    @Transient
+    private List<Date> shippingDates;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "ORDER_ID")
     private List<Itemgroup> itemgroup;
@@ -25,15 +29,19 @@ public class Order {
 
     public Order(Date date, List<Itemgroup> itemgroup) {
         this.date = date;
-        this.totalPrice = totalPrice;
         this.itemgroup = itemgroup;
     }
 
-    //Method for totalPrice
+    private BigDecimal calculateTotalPrice(List<Itemgroup> itemgroup) {
+        BigDecimal totalPrice = new BigDecimal(0);
+        for (Itemgroup item : itemgroup) {
+           totalPrice = totalPrice.add(item.getItemgroupPrice());
+        }
+        return totalPrice;
+    }
 
-
-    public int getId() {
-        return id;
+    public int getOrderId() {
+        return orderId;
     }
 
     public Date getDate() {
@@ -46,6 +54,21 @@ public class Order {
 
     public BigDecimal getTotalPrice() {
         return totalPrice;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        return orderId == order.orderId;
+    }
+
+    @Override
+    public int hashCode() {
+        return orderId;
     }
 }
 

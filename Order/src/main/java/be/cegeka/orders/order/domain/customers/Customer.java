@@ -1,5 +1,7 @@
 package be.cegeka.orders.order.domain.customers;
 
+import be.cegeka.orders.order.domain.orders.Order;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +25,9 @@ public class Customer {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-//    @OneToMany
-//    @JoinColumn(name = "USER_ORDERS")
-//    private List<Object> userOrders = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "CUSTOMER_ORDERS")
+    private List<Order> customerOrders = new ArrayList<>();
 
     private Customer() {
     }
@@ -36,6 +38,10 @@ public class Customer {
         this.email = email;
         this.adress = adress;
         this.phoneNumber = phoneNumber;
+    }
+
+    public void addOrderToThisCustomer(Order order){
+        customerOrders.add(order);
     }
 
     public String getName() {

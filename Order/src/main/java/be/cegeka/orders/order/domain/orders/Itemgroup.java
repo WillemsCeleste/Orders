@@ -7,12 +7,12 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@Table(name = "ITEMS_ON_ORDER")
+@Table(name = "ITEMGROUP")
 public class Itemgroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int iooId;
     @Column(name = "AMOUNT")
     private int amount;
     @Column(name = "ITEMGROUP_PRICE")
@@ -28,18 +28,13 @@ public class Itemgroup {
 
     public Itemgroup(int amount, Date shippingDate, Item item) {
         this.amount = amount;
-        this.itemgroupPrice = new BigDecimal(item.getSellingPrice() * amount);
+        this.itemgroupPrice = item.getSellingPrice().multiply(BigDecimal.valueOf(amount));
         this.shippingDate = shippingDate;
         this.item = item;
     }
 
-    //Method for groupprice
-    public BigDecimal calculateItemgroupPrice() {
-        return item.getSellingPrice() * amount;
-    }
-
     public int getId() {
-        return id;
+        return iooId;
     }
 
     public int getAmount() {
@@ -56,5 +51,20 @@ public class Itemgroup {
 
     public Item getItem() {
         return item;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Itemgroup itemgroup = (Itemgroup) o;
+
+        return iooId == itemgroup.iooId;
+    }
+
+    @Override
+    public int hashCode() {
+        return iooId;
     }
 }
