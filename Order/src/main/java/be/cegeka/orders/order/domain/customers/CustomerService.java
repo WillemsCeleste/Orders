@@ -9,7 +9,10 @@ public class CustomerService {
     @Inject
     private CustomerRepository customerRepository;
 
-    public void addCustomer(String name, String lastName, String emailAdress, String adress, String phoneNumber) {
-        customerRepository.addCustomer(new Customer(name, lastName, emailAdress, adress, phoneNumber));
+    @Inject
+    private CustomerMapper customerMapper;
+
+    public Customer addCustomer(CustomerDto customerDto) {
+        return customerRepository.addCustomer(customerMapper.makeCustomerFromDto(customerDto));
     }
 }

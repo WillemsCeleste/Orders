@@ -1,7 +1,5 @@
 package be.cegeka.orders.order.domain.items;
 
-import be.cegeka.orders.order.application.ItemDto;
-
 import javax.inject.Inject;
 import javax.inject.Named;
 

@@ -1,5 +1,8 @@
 package be.cegeka.orders.order.application;
 
+import be.cegeka.orders.order.domain.customers.Customer;
+import be.cegeka.orders.order.domain.customers.CustomerDto;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import be.cegeka.orders.order.domain.customers.CustomerService;
@@ -22,10 +25,17 @@ public class CustomerControllerTest {
     @Mock
     private CustomerService customerService;
 
+    private CustomerDto customerDto;
+
+    @Before
+    public void setUp() throws Exception {
+        customerDto = new CustomerDto("Ralph", "Vancampenhoudt","ralph@gmail", "Leuven", "0497642465" );
+    }
+
     @Test
     public void addCustomer_shouldActivateCorrespondingMethod() throws Exception {
-        customerController.addCustomer("Ralph", "Vancampenhoudt","ralph@gmail", "Leuven", "0497642465" );
-        verify(customerService).addCustomer("Ralph", "Vancampenhoudt","ralph@gmail", "Leuven", "0497642465");
+        customerController.addCustomer(customerDto);
+        verify(customerService).addCustomer(customerDto);
     }
 
 }
