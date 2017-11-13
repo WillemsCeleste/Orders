@@ -18,7 +18,7 @@ public class Item {
     @Column(name = "SELLING_PRICE")
     private BigDecimal sellingPrice;
 
-    public Item() {
+    private Item() {
     }
 
     public Item(String name, String description, BigDecimal sellingPrice) {

@@ -10,10 +10,11 @@ public class ItemRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public ItemRepository() {
+    private ItemRepository() {
     }
 
-    public void addItem(Item item) {
+    public Item addItem(Item item) {
         entityManager.persist(item);
+        return item;
     }
 }

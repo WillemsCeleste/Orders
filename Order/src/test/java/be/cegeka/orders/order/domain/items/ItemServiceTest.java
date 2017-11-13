@@ -1,6 +1,8 @@
 package be.cegeka.orders.order.domain.items;
 
 import be.cegeka.orders.order.application.ItemController;
+import be.cegeka.orders.order.application.ItemDto;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -22,10 +24,19 @@ public class ItemServiceTest {
 
     @Mock
     private ItemRepository itemRepository;
+    @Mock
+    private ItemMapper itemMapper;
 
+    private ItemDto itemDto;
+
+    @Before
+    public void setUp() throws Exception {
+        itemDto = new ItemDto("Nicky", "Is not really an item, Jerk", new BigDecimal(2.2));
+
+    }
     @Test
     public void addItem_shouldGoToRepository() throws Exception {
-        itemService.addItem("Nicky", "Is not really an item, Jerk", new BigDecimal(2.2));
-        verify(itemRepository).addItem(new Item("Nicky", "Is not really an item, Jerk", new BigDecimal(2.2)));
+        itemService.addItem(itemDto);
+        verify(itemRepository).addItem(itemMapper.makeItemFromDto(itemDto));
     }
 }

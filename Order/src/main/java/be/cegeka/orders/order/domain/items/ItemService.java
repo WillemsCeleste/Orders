@@ -1,16 +1,21 @@
 package be.cegeka.orders.order.domain.items;
 
+import be.cegeka.orders.order.application.ItemDto;
+
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.math.BigDecimal;
 
 @Named
 public class ItemService {
+
+    @Inject
+    ItemMapper itemMapper;
+
     @Inject
     private ItemRepository itemRepository;
 
-    public void addItem(String name, String description, BigDecimal sellingPrice) {
-        itemRepository.addItem(new Item(name,description,sellingPrice));
+    public Item addItem(ItemDto itemDto) {
+        return itemRepository.addItem(itemMapper.makeItemFromDto(itemDto));
 
     }
 }
