@@ -35,7 +35,9 @@ pipeline {
         }
 
         stage('ArchiveArtifacts'){
-            archiveArtifacts artifacts: '**/build/libs/*.war', fingerprint: true
+            steps {
+                archiveArtifacts artifacts: '**/build/libs/*.war', fingerprint: true
+            }
         }
     }
 
