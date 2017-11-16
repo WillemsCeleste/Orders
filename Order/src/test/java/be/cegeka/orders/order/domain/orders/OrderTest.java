@@ -20,6 +20,8 @@ public class OrderTest {
 
     private Order order;
 
+    List<Itemgroup> itemgroup;
+
     @Before
     public void setUp() throws Exception {
         Customer testCustomer = new Customer("Ralphie", "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
@@ -29,7 +31,7 @@ public class OrderTest {
         Item koe = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
         Itemgroup item1 = new Itemgroup(5, shippingDate, konijn);
         Itemgroup item2 = new Itemgroup(3, shippingDate, koe);
-        List<Itemgroup> itemgroup = new ArrayList<>();
+        itemgroup = new ArrayList<>();
         itemgroup.add(item1);
         itemgroup.add(item2);
         order = new Order(date, itemgroup);
@@ -37,7 +39,7 @@ public class OrderTest {
 
     @Test
     public void getTotalPrice() throws Exception {
-        assertThat(order.getTotalPrice()).isEqualTo(BigDecimal.valueOf(25.0));
+        assertThat(order.getTotalPrice(itemgroup)).isEqualTo(BigDecimal.valueOf(25.0));
     }
 
     @Test

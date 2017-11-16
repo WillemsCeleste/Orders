@@ -9,6 +9,7 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "ITEM_ID")
     private int id;
     @Column(name = "NAME")
