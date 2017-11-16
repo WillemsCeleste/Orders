@@ -24,7 +24,7 @@ public class OrderController {
     public void addOrder(List<Itemgroup> itemgroup, Customer customer) {
 
 
-        orderService.addOrder( itemgroup,customer);
+        orderService.addOrder(itemgroup,customer);
     }
 
 }
