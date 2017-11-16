@@ -20,7 +20,7 @@ public class OrderTest {
 
     private Order order;
 
-    List<Itemgroup> itemgroup;
+    private List<Itemgroup> itemgroup;
 
     @Before
     public void setUp() throws Exception {

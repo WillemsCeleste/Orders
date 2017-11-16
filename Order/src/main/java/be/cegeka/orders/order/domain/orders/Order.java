@@ -1,7 +1,5 @@
 package be.cegeka.orders.order.domain.orders;
 
-import be.cegeka.orders.order.domain.customers.Customer;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -32,7 +30,7 @@ public class Order {
         this.itemgroup = itemgroup;
     }
 
-    public void calculateTotalPrice(List<Itemgroup> itemgroup) {
+    private void calculateTotalPrice(List<Itemgroup> itemgroup) {
         totalPrice = new BigDecimal(0);
         for (Itemgroup item : itemgroup) {
            totalPrice = totalPrice.add(item.getItemgroupPrice());
