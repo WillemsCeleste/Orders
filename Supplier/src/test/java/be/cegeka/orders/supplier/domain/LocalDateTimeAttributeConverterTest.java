@@ -35,4 +35,16 @@ public class LocalDateTimeAttributeConverterTest {
         Assertions.assertThat(actual).isEqualTo(localDateTime);
     }
 
+    @Test
+    public void convertToDatabaseColumn_ShouldNotBeEqualToNull() throws Exception {
+        Timestamp actual = converter.convertToDatabaseColumn(localDateTime);
+        Assertions.assertThat(actual).isNotEqualTo(null);
+    }
+//
+//    @Test
+//    public void convertNullToDatabase_ShouldBeEqualToNull() throws Exception {
+//        Timestamp actual = converter.convertToDatabaseColumn(null);
+//        Assertions.assertThat(actual).isEqualTo(null);
+//    }
+
 }
