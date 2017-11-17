@@ -43,7 +43,16 @@ public class OrderTest {
     }
 
     @Test
-    public void equals() throws Exception {
+    public void anOrder_shouldNotEqualADifferentObject() throws Exception {
+        Order actual = order;
+        Object expected = new Object();
+        Assertions.assertThat(actual).isNotEqualTo(expected);
     }
 
+    @Test
+    public void anOrder_shouldEqualItself() throws Exception {
+        Assertions.assertThat(order).isEqualTo(order);
+    }
+
+    
 }
