@@ -5,6 +5,7 @@ import be.cegeka.orders.order.domain.items.Item;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -62,6 +63,8 @@ public class OrderTest {
     @Test
     public void anOrderWithADifferentId_shouldNotBeEqual() throws Exception {
         Order order2 = new Order(Date.valueOf(LocalDate.of(2017, 11, 11)),itemgroup);
+        ReflectionTestUtils.setField(order2,"orderId",1);
         Assertions.assertThat(order).isNotEqualTo(order2);
+
     }
 }

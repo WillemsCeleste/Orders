@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.Assert.*;
@@ -11,10 +12,12 @@ import static org.junit.Assert.*;
 public class CustomerTest {
 
     private Customer customer;
+    private Customer customer2;
 
     @Before
     public void setUp() throws Exception {
         customer = new Customer("Ralphie", "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
+        customer2 = new Customer("Ralphie", "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
     }
 
     @Test
@@ -45,6 +48,12 @@ public class CustomerTest {
     @Test
     public void equals_sameObject_isTrue() throws Exception {
         assertThat(customer).isEqualTo(customer);
+    }
+
+    @Test
+    public void equals_CustomerWithDifferentIdIsFalse() throws Exception {
+        ReflectionTestUtils.setField(customer2,"id",54);
+        assertThat(customer).isNotEqualTo(customer2);
     }
 
     @Test
