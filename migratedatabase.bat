@@ -1,2 +1,3 @@
-call ./gradlew.bat flywayMigrate -P flyway.user=test -P flyway.password=password -P flyway.schemas=testorder -P flyway.url=jdbc:mysql://localhost:3306/testorder
-call ./gradlew.bat flywayMigrate -P flyway.user=test -P flyway.password=password -P flyway.schemas=testsupplier -P flyway.url=jdbc:mysql://localhost:3306/testsupplier
+call ./gradlew.bat :Order:flywayMigrate -P flyway.user=hanos -P flyway.password=password -P flyway.schemas=prodorder -P flyway.url=jdbc:mysql://localhost:3306/prodorder
+call ./gradlew.bat :Supplier:flywayMigrate -P flyway.user=hanos -P flyway.password=password -P flyway.schemas=prodsupplier -P flyway.url=jdbc:mysql://localhost:3306/prodsupplier
+pause
