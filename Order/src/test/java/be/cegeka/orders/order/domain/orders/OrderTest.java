@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;

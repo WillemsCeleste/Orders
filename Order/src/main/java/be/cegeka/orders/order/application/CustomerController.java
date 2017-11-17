@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.awt.*;
 
 @RestController
 @RequestMapping(path = "/customer")
