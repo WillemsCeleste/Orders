@@ -47,9 +47,9 @@ public class LocalDateTimeAttributeConverterTest {
         Assertions.assertThat(actual).isEqualTo(null);
     }
 
-//    @Test
-//    public void convertNulltoEntity_ShouldBeEqualToNull() throws Exception {
-//        LocalDateTime actual = converter.convertToEntityAttribute(null);
-//        Assertions.assertThat(actual).isEqualTo(null);
-//    }
+    @Test
+    public void convertNulltoEntity_ShouldBeEqualToNull() throws Exception {
+        LocalDateTime actual = converter.convertToEntityAttribute(null);
+        Assertions.assertThat(actual).isNull();
+    }
 }
