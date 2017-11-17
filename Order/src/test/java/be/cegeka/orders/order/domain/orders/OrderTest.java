@@ -5,7 +5,13 @@ import be.cegeka.orders.order.domain.items.Item;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.test.util.ReflectionTestUtils;
 
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -18,7 +24,7 @@ import static org.junit.Assert.*;
 public class OrderTest {
 
 
-    private Order order;
+    private Order order, order2;
 
     private List<Itemgroup> itemgroup;
 
@@ -35,6 +41,7 @@ public class OrderTest {
         itemgroup.add(item1);
         itemgroup.add(item2);
         order = new Order(date, itemgroup);
+        order2 = new Order(date, itemgroup);
     }
 
     @Test
@@ -61,7 +68,7 @@ public class OrderTest {
 
     @Test
     public void anOrderWithADifferentId_shouldNotBeEqual() throws Exception {
-        Order order2 = new Order(Date.valueOf(LocalDate.of(2017, 11, 11)),itemgroup);
+        ReflectionTestUtils.setField(order2, "orderId", 5);
         Assertions.assertThat(order).isNotEqualTo(order2);
     }
 }
