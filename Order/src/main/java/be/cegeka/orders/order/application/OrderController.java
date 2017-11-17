@@ -22,8 +22,6 @@ public class OrderController {
 
     @PostMapping
     public void addOrder(List<Itemgroup> itemgroup, Customer customer) {
-
-
         orderService.addOrder(itemgroup,customer);
     }
 
