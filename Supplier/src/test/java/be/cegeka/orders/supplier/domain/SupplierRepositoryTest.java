@@ -16,6 +16,8 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,12 +31,19 @@ public class SupplierRepositoryTest {
     @Inject
     private SupplierRepository supplierRepository;
 
-    private StockOrder stockOrder;
+    private StockOrder stockOrder, stockOrder2;
+
+    private List<StockOrder> stockorders;
 
     @Before
     public void setUp() throws Exception {
         stockOrder = new StockOrder(LocalDateTime.of(2017, 12, 3, 9, 30),
                 "Kiki", "details of order");
+        stockOrder2 = new StockOrder(LocalDateTime.of(2017, 12, 03, 9, 30),
+                "Seppe", "details of order");
+        stockorders = new ArrayList<>();
+        stockorders.add(stockOrder);
+        stockorders.add(stockOrder2);
     }
 
 
@@ -44,4 +53,11 @@ public class SupplierRepositoryTest {
         Assertions.assertThat(entityManager.find(StockOrder.class, stockOrder.getId())).isEqualTo(stockOrder);
     }
 
+    @Test
+    public void getAllStockOrders_ShouldReturnAllStockOrders() throws Exception {
+        supplierRepository.addStockOrder(stockOrder);
+        supplierRepository.addStockOrder(stockOrder2);
+
+        Assertions.assertThat(supplierRepository.getAllStockOrders()).contains(stockOrder, stockOrder2);
+    }
 }

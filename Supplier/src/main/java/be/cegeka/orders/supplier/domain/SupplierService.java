@@ -2,6 +2,7 @@ package be.cegeka.orders.supplier.domain;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
 
 @Named
 public class SupplierService {
@@ -12,5 +13,9 @@ public class SupplierService {
 
     public StockOrder addStockOrder(StockOrder stockOrder) {
         return supplierRepository.addStockOrder(stockOrder);
+    }
+
+    public List<StockOrder> getAllStockOrders() {
+        return supplierRepository.getAllStockOrders();
     }
 }
