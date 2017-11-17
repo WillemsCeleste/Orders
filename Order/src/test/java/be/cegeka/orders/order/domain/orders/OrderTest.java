@@ -43,7 +43,8 @@ public class OrderTest {
     }
 
     @Test
-    public void equals() throws Exception {
+    public void AnOrderShouldBeEqualToAnotherOrderWithSameId() throws Exception {
+
     }
 
 }
