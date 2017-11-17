@@ -13,7 +13,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 public class OrderServiceTest {
@@ -34,6 +33,6 @@ public class OrderServiceTest {
 
         orderService.addOrder(itemgroup,testCustomer);
 
-        verify(orderRepository).addOrder(new Order(Date.valueOf(LocalDate.now()), itemgroup));
+        verify(orderRepository).addOrder(new Order(Date.valueOf(LocalDate.now()), itemgroup), testCustomer);
     }
 }

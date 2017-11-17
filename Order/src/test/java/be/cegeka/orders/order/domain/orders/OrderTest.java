@@ -5,7 +5,12 @@ import be.cegeka.orders.order.domain.items.Item;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.springframework.test.util.ReflectionTestUtils;
 
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -18,7 +23,9 @@ import static org.junit.Assert.*;
 public class OrderTest {
 
 
-    private Order order;
+    private Order order, order2;
+
+    private List<Itemgroup> itemgroup;
 
     @Before
     public void setUp() throws Exception {
@@ -29,19 +36,38 @@ public class OrderTest {
         Item koe = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
         Itemgroup item1 = new Itemgroup(5, shippingDate, konijn);
         Itemgroup item2 = new Itemgroup(3, shippingDate, koe);
-        List<Itemgroup> itemgroup = new ArrayList<>();
+        itemgroup = new ArrayList<>();
         itemgroup.add(item1);
         itemgroup.add(item2);
         order = new Order(date, itemgroup);
+        order2 = new Order(date, itemgroup);
     }
 
     @Test
     public void getTotalPrice() throws Exception {
-        assertThat(order.getTotalPrice()).isEqualTo(BigDecimal.valueOf(25.0));
+        assertThat(order.getTotalPrice(itemgroup)).isEqualTo(BigDecimal.valueOf(25.0));
     }
 
     @Test
-    public void equals() throws Exception {
+    public void anOrder_shouldNotEqualADifferentObject() throws Exception {
+        Order actual = order;
+        Object expected = new Object();
+        Assertions.assertThat(actual).isNotEqualTo(expected);
     }
 
+    @Test
+    public void anOrder_shouldEqualItself() throws Exception {
+        Assertions.assertThat(order).isEqualTo(order);
+    }
+
+    @Test
+    public void anOrder_equalsNullObject_shouldBeFalse() throws Exception {
+        Assertions.assertThat(order).isNotEqualTo(null);
+    }
+
+    @Test
+    public void anOrderWithADifferentId_shouldNotBeEqual() throws Exception {
+        ReflectionTestUtils.setField(order2, "orderId", 5);
+        Assertions.assertThat(order).isNotEqualTo(order2);
+    }
 }

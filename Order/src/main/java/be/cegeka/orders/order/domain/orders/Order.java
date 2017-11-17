@@ -1,7 +1,5 @@
 package be.cegeka.orders.order.domain.orders;
 
-import be.cegeka.orders.order.domain.customers.Customer;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -21,7 +19,7 @@ public class Order {
     @Transient
     private List<Date> shippingDates;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "ORDER_ID")
+    @JoinColumn(name = "ORDER_ID", nullable = false)
     private List<Itemgroup> itemgroup;
 
     public Order() {
@@ -32,12 +30,11 @@ public class Order {
         this.itemgroup = itemgroup;
     }
 
-    private BigDecimal calculateTotalPrice(List<Itemgroup> itemgroup) {
-        BigDecimal totalPrice = new BigDecimal(0);
+    private void calculateTotalPrice(List<Itemgroup> itemgroup) {
+        totalPrice = new BigDecimal(0);
         for (Itemgroup item : itemgroup) {
            totalPrice = totalPrice.add(item.getItemgroupPrice());
         }
-        return totalPrice;
     }
 
     public int getOrderId() {
@@ -52,7 +49,8 @@ public class Order {
         return itemgroup;
     }
 
-    public BigDecimal getTotalPrice() {
+    public BigDecimal getTotalPrice(List<Itemgroup> itemgroup) {
+        calculateTotalPrice(itemgroup);
         return totalPrice;
     }
 
