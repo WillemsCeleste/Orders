@@ -43,8 +43,25 @@ public class OrderTest {
     }
 
     @Test
-    public void AnOrderShouldBeEqualToAnotherOrderWithSameId() throws Exception {
-
+    public void anOrder_shouldNotEqualADifferentObject() throws Exception {
+        Order actual = order;
+        Object expected = new Object();
+        Assertions.assertThat(actual).isNotEqualTo(expected);
     }
 
+    @Test
+    public void anOrder_shouldEqualItself() throws Exception {
+        Assertions.assertThat(order).isEqualTo(order);
+    }
+
+    @Test
+    public void anOrder_equalsNullObject_shouldBeFalse() throws Exception {
+        Assertions.assertThat(order).isNotEqualTo(null);
+    }
+
+    @Test
+    public void anOrderWithADifferentId_shouldNotBeEqual() throws Exception {
+        Order order2 = new Order(Date.valueOf(LocalDate.of(2017, 11, 11)),itemgroup);
+        Assertions.assertThat(order).isNotEqualTo(order2);
+    }
 }
