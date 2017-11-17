@@ -27,7 +27,7 @@ public class Customer {
     private String phoneNumber;
 
     @OneToMany
-    @JoinColumn(name = "CUSTOMER_ORDERS")
+    @JoinColumn(name = "CUSTOMER_ID", nullable = false)
     private List<Order> customerOrders = new ArrayList<>();
 
     private Customer() {
