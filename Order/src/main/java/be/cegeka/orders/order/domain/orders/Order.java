@@ -19,7 +19,7 @@ public class Order {
     @Transient
     private List<Date> shippingDates;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "ORDER_ID")
+    @JoinColumn(name = "ORDER_ID", nullable = false)
     private List<Itemgroup> itemgroup;
 
     public Order() {

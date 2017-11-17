@@ -16,8 +16,6 @@ public class OrderService {
 
     public void addOrder(List<Itemgroup> itemgroup, Customer customer) {
         Order orderToAdd = new Order(Date.valueOf(LocalDate.now()), itemgroup);
-        orderRepository.addOrder(orderToAdd);
-        customer.addOrderToThisCustomer(orderToAdd);
-
+        orderRepository.addOrder(orderToAdd, customer);
     }
 }
