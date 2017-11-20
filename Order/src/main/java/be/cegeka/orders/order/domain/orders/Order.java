@@ -3,6 +3,7 @@ package be.cegeka.orders.order.domain.orders;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class Order {
     private List<Date> shippingDates;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "ORDER_ID", nullable = false)
-    private List<ItemGroup> itemGroupList;
+    private List<ItemGroup> itemGroupList=new ArrayList<>();
 
     public Order() {
     }

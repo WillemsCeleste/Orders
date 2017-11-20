@@ -1,7 +1,5 @@
 package be.cegeka.orders.order.application;
 
-import be.cegeka.orders.order.domain.customers.Customer;
-import be.cegeka.orders.order.domain.orders.ItemGroup;
 import be.cegeka.orders.order.domain.orders.ItemGroupDto;
 import be.cegeka.orders.order.domain.orders.OrderService;
 import org.junit.Rule;
@@ -14,6 +12,7 @@ import org.mockito.junit.MockitoRule;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 public class OrderControllerTest {
@@ -35,4 +34,9 @@ public class OrderControllerTest {
 
     }
 
+    @Test
+    public void getOrdersByCustomerId_shouldActivateOrderServiceMethod() throws Exception {
+        orderController.getOrdersByCustomerId(1);
+        verify(orderService).getOrdersByCustomerId(1);
+    }
 }

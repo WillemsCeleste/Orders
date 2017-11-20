@@ -45,4 +45,10 @@ public class OrderServiceTest {
         orderService.addOrder(itemGroupDtoList, 1);
         verify(orderRepository).addOrder(Mockito.refEq(new Order(Date.valueOf(LocalDate.now()), itemGroupList)),Mockito.eq(1));
     }
+
+    @Test
+    public void getOrdersByCustomerId_shouldActivateCorrespondingMethod() throws Exception {
+        orderService.getOrdersByCustomerId(1);
+        verify(orderRepository).getOrdersByCustomerId(1);
+    }
 }

@@ -29,6 +29,7 @@ public class CustomerRepositoryTest {
 
     @Inject
     private CustomerRepository customerRepository;
+
     private Customer seppe, johan;
 
     @Before
@@ -44,14 +45,13 @@ public class CustomerRepositoryTest {
     public void addCustomer_shouldAddCustomer() throws Exception {
         Customer testCustomer = new Customer("naam","achternaam", "email", "adres","nummer");
         customerRepository.addCustomer(testCustomer);
-        assertThat( customerRepository.getAll() ).contains(seppe,johan,testCustomer);
-        assertThat(customerRepository.getAll().size()).isEqualTo(3);
+        assertThat( customerRepository.getAllCustomers() ).contains(seppe,johan,testCustomer);
 
     }
 
     @Test
-    public void getAllShouldReturnAll() throws Exception {
-        assertThat(customerRepository.getAll()).contains(seppe, johan);
+    public void getAllCustomers_ShouldReturnAllCustomers() throws Exception {
+        assertThat(customerRepository.getAllCustomers()).contains(seppe, johan);
     }
 
     @After
