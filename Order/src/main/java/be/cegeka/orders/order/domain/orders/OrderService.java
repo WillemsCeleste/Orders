@@ -14,8 +14,16 @@ public class OrderService {
     @Inject
     private OrderRepository orderRepository;
 
-    public void addOrder(List<Itemgroup> itemgroup, Customer customer) {
-        Order orderToAdd = new Order(Date.valueOf(LocalDate.now()), itemgroup);
-        orderRepository.addOrder(orderToAdd, customer);
+    @Inject
+    private ItemGroupMapper itemGroupMapper;
+
+    public void addOrder(List<ItemGroupDto> itemGroupDtoList, int customerId) {
+        List<ItemGroup> itemGroupList = itemGroupMapper.makeItemGroupList(itemGroupDtoList);
+        Order orderToAdd = new Order(Date.valueOf(LocalDate.now()), itemGroupList);
+        orderRepository.addOrder(orderToAdd, customerId);
+    }
+
+    public List<Order> getOrdersByCustomerId(int customerId) {
+        return orderRepository.getOrdersByCustomerId(customerId);
     }
 }

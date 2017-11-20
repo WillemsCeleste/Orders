@@ -3,6 +3,7 @@ package be.cegeka.orders.order.domain.orders;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,19 +21,19 @@ public class Order {
     private List<Date> shippingDates;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "ORDER_ID", nullable = false)
-    private List<Itemgroup> itemgroup;
+    private List<ItemGroup> itemGroupList=new ArrayList<>();
 
     public Order() {
     }
 
-    public Order(Date date, List<Itemgroup> itemgroup) {
+    public Order(Date date, List<ItemGroup> itemGroup) {
         this.date = date;
-        this.itemgroup = itemgroup;
+        this.itemGroupList = itemGroup;
     }
 
-    private void calculateTotalPrice(List<Itemgroup> itemgroup) {
+    private void calculateTotalPrice(List<ItemGroup> itemGroup) {
         totalPrice = new BigDecimal(0);
-        for (Itemgroup item : itemgroup) {
+        for (ItemGroup item : itemGroup) {
            totalPrice = totalPrice.add(item.getItemgroupPrice());
         }
     }
@@ -45,12 +46,12 @@ public class Order {
         return date;
     }
 
-    public List<Itemgroup> getItemsOnOrder() {
-        return itemgroup;
+    public List<ItemGroup> getItemsOnOrder() {
+        return itemGroupList;
     }
 
-    public BigDecimal getTotalPrice(List<Itemgroup> itemgroup) {
-        calculateTotalPrice(itemgroup);
+    public BigDecimal getTotalPrice(List<ItemGroup> itemGroup) {
+        calculateTotalPrice(itemGroup);
         return totalPrice;
     }
 
