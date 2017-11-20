@@ -11,10 +11,11 @@ import java.time.LocalDate;
 
 public class ItemGroupTest {
 
-    ItemGroup testItemGroup;
+    private ItemGroup testItemGroup;
+    private Item koe;
     @Before
     public void name() throws Exception {
-        Item koe = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
+        koe = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
         testItemGroup = new ItemGroup(5, Date.valueOf(LocalDate.of(2017, 11, 10)),koe);
     }
 
@@ -24,4 +25,9 @@ public class ItemGroupTest {
 
     }
 
+    @Test
+    public void getItem() throws Exception {
+
+        Assertions.assertThat(testItemGroup.getItem()).isEqualTo(koe);
+    }
 }
