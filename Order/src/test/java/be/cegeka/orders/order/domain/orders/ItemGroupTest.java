@@ -15,13 +15,16 @@ public class ItemGroupTest {
     private ItemGroup testItemGroup;
     private Item koe;
     private Item koe2;
+    private ItemGroup testItemGroup2;
+
     @Before
     public void name() throws Exception {
         koe = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
-        ReflectionTestUtils.setField(koe,"id",21);
         koe2 = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
-        ReflectionTestUtils.setField(koe2,"id",7);
         testItemGroup = new ItemGroup(5, Date.valueOf(LocalDate.of(2017, 11, 10)),koe);
+        ReflectionTestUtils.setField(testItemGroup,"iooId",21);
+        testItemGroup2 = new ItemGroup(5, Date.valueOf(LocalDate.of(2017, 11, 10)),koe2);
+        ReflectionTestUtils.setField(testItemGroup2,"iooId",7);
     }
 
     @Test
@@ -38,22 +41,22 @@ public class ItemGroupTest {
 
     @Test
     public void equals_sameObject_isTrue() throws Exception {
-        Assertions.assertThat(koe).isEqualTo(koe);
+        Assertions.assertThat(testItemGroup).isEqualTo(testItemGroup);
     }
 
     @Test
     public void equals_differentId_isFalse() throws Exception {
-        Assertions.assertThat(koe).isNotEqualTo(koe2);
+        Assertions.assertThat(testItemGroup).isNotEqualTo(testItemGroup2);
     }
 
      @Test
     public void equals_nullObject_isFalse() throws Exception {
-        Assertions.assertThat(koe).isNotEqualTo(null);
+        Assertions.assertThat(testItemGroup).isNotEqualTo(null);
     }
 
      @Test
     public void equals_otherClass_isFalse() throws Exception {
-        Assertions.assertThat(koe).isNotEqualTo(new Object());
+        Assertions.assertThat(testItemGroup).isNotEqualTo(new Object());
     }
 
 
