@@ -26,11 +26,10 @@ public class OrderTest {
     public void setUp() throws Exception {
         Customer testCustomer = new Customer("Ralphie", "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
         Date date = Date.valueOf(LocalDate.of(2017, 11, 10));
-        Date shippingDate = Date.valueOf(LocalDate.of(2017, 11, 13));
         Item konijn = new Item("konijn", "cute and fluffy", BigDecimal.valueOf(2.00));
         Item koe = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
-        ItemGroup item1 = new ItemGroup(5, shippingDate, konijn);
-        ItemGroup item2 = new ItemGroup(3, shippingDate, koe);
+        ItemGroup item1 = new ItemGroup(5, konijn);
+        ItemGroup item2 = new ItemGroup(3, koe);
         itemGroup = new ArrayList<>();
         itemGroup.add(item1);
         itemGroup.add(item2);

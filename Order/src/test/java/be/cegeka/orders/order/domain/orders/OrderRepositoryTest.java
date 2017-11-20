@@ -47,9 +47,9 @@ public class OrderRepositoryTest {
 //        List<ItemGroupDto> itemGroupDtoList = new ArrayList<>();
 //        ItemGroupDto testIGD = new ItemGroupDto(5,swedishPenisPump.getId());
 //        itemGroupDtoList.add(testIGD);
+
         Order order = new Order(new Date(2017 - 10 - 15),
-                Arrays.asList(new ItemGroup(1, new Date(2017 - 10 - 15),
-                new Item("thisistoolong", "for sure", BigDecimal.valueOf(100.5)))));
+                Arrays.asList(new ItemGroup(1, new Item("thisistoolong", "for sure", BigDecimal.valueOf(100.5)))));
 
         orderRepository.addOrder(order, customer.getId());
 

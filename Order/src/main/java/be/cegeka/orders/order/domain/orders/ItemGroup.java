@@ -26,10 +26,10 @@ public class ItemGroup {
     public ItemGroup() {
     }
 
-    public ItemGroup(int amount, Date shippingDate, Item item) {
+    public ItemGroup(int amount, Item item) {
         this.amount = amount;
         this.itemgroupPrice = item.getSellingPrice().multiply(BigDecimal.valueOf(amount));
-        this.shippingDate = shippingDate;
+        this.shippingDate = item.getShippingDate();
         this.item = item;
     }
 

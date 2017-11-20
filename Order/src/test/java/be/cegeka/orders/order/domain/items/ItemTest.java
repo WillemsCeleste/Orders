@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -246,5 +247,15 @@ public class ItemTest {
                         .withSellingPrice(new BigDecimal(2.2))
                         .build()
                 );
+    }
+
+    @Test
+    public void getShippingDate_shouldReturnShippingDate() throws Exception {
+      assertThat(item.getShippingDate()).isEqualTo(java.sql.Date.valueOf(LocalDate.now().plusDays(7)));
+    }
+
+    @Test
+    public void isInStock_shouldReturnFalse() throws Exception {
+       assertThat(item.isInStock()).isFalse();
     }
 }

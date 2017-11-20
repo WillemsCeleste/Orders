@@ -21,9 +21,9 @@ public class ItemGroupTest {
     public void name() throws Exception {
         koe = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
         koe2 = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
-        testItemGroup = new ItemGroup(5, Date.valueOf(LocalDate.of(2017, 11, 10)),koe);
+        testItemGroup = new ItemGroup(5,koe);
         ReflectionTestUtils.setField(testItemGroup,"iooId",21);
-        testItemGroup2 = new ItemGroup(5, Date.valueOf(LocalDate.of(2017, 11, 10)),koe2);
+        testItemGroup2 = new ItemGroup(5, koe2);
         ReflectionTestUtils.setField(testItemGroup2,"iooId",7);
     }
 

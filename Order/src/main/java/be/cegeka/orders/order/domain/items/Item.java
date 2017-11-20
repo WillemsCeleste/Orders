@@ -2,6 +2,7 @@ package be.cegeka.orders.order.domain.items;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -69,30 +70,15 @@ public class Item {
 
     public Date getShippingDate() {
 
-        return null;
+        if(isInStock()) {
+            return java.sql.Date.valueOf(LocalDate.now().plusDays(1));
+        } else {
+            return java.sql.Date.valueOf(LocalDate.now().plusDays(7));
+        }
     }
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        Item item = (Item) o;
-//
-//        if (id != item.id) return false;
-//        if (Double.compare(item.sellingPrice, sellingPrice) != 0) return false;
-//        if (name != null ? !name.equals(item.name) : item.name != null) return false;
-//        return description != null ? description.equals(item.description) : item.description == null;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result;
-//        long temp;
-//        result = id;
-//        result = 31 * result + (name != null ? name.hashCode() : 0);
-//        result = 31 * result + (description != null ? description.hashCode() : 0);
-//        temp = Double.doubleToLongBits(sellingPrice);
-//        result = 31 * result + (int) (temp ^ (temp >>> 32));
-//        return result;
-//    }
+
+    public boolean isInStock() {
+        return false; //No Stock implemented yet
+    }
+
 }

@@ -24,6 +24,6 @@ public class ItemGroupMapper {
     public ItemGroup makeItemGroup(ItemGroupDto itemGroupDto){
 
         Item item = orderRepository.getItemByID(itemGroupDto.itemId);
-     return new ItemGroup(itemGroupDto.amount, item.getShippingDate(), item);
+     return new ItemGroup(itemGroupDto.amount, item);
     }
 }

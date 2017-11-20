@@ -47,7 +47,7 @@ public class ItemGroupMapperTest {
         testItemGroupDtoList.add(testItemGroupDto);
         testItem = new Item("Koe","een koe, duh!", BigDecimal.valueOf(10));
         ReflectionTestUtils.setField(testItem,"id",10);
-        testItemGroup = new ItemGroup(4, Date.valueOf(LocalDate.of(2017, 11, 10)),testItem);
+        testItemGroup = new ItemGroup(4,testItem);
         when(orderRepository.getItemByID(testItemGroupDto.itemId)).thenReturn(testItem);
 
     }
