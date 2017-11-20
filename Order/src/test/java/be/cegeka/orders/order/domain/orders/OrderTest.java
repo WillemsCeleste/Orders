@@ -65,4 +65,11 @@ public class OrderTest {
         ReflectionTestUtils.setField(order2, "orderId", 5);
         Assertions.assertThat(order).isNotEqualTo(order2);
     }
+
+    @Test
+    public void anOrderWithSameId_shouldBeEqual() throws Exception {
+        ReflectionTestUtils.setField(order, "orderId", 5);
+        ReflectionTestUtils.setField(order2, "orderId", 5);
+        Assertions.assertThat(order).isEqualTo(order2);
+    }
 }
