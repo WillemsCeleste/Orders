@@ -29,12 +29,16 @@ public class OrderControllerTest {
 
     @Test
     public void addOrder() throws Exception {
-       Customer testCustomer = new Customer("Ralphie", "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
+        Customer testCustomer = new Customer("Ralphie", "VanCampenHoudt", "ralphie@gmail.com", "diestsestraat 999", "016 320208");
 
         List<Itemgroup> itemgroup = new ArrayList<>();
-        orderController.addOrder(itemgroup,testCustomer);
-        verify(orderService).addOrder(itemgroup,testCustomer);
-
+        orderController.addOrder(itemgroup, testCustomer);
+        verify(orderService).addOrder(itemgroup, testCustomer);
     }
 
+    @Test
+    public void getOrdersByCustomerId_shouldActivateOrderServiceMethod() throws Exception {
+        orderController.getOrdersByCustomerId(1);
+        verify(orderService).getOrdersByCustomerId(1);
+    }
 }

@@ -38,4 +38,9 @@ public class CustomerControllerTest {
         verify(customerService).addCustomer(customerDto);
     }
 
+    @Test
+    public void getAllCustomers_ShouldActivateCorrespondingMethod() throws Exception {
+        customerController.getAllCustomers();
+        verify(customerService).getAllCustomers();
+    }
 }

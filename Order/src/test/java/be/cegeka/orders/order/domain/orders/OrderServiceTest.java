@@ -35,4 +35,10 @@ public class OrderServiceTest {
 
         verify(orderRepository).addOrder(new Order(Date.valueOf(LocalDate.now()), itemgroup), testCustomer);
     }
+
+    @Test
+    public void getOrdersByCustomerId_shouldActivateCorrespondingMethod() throws Exception {
+        orderService.getOrdersByCustomerId(1);
+        verify(orderRepository).getOrdersByCustomerId(1);
+    }
 }

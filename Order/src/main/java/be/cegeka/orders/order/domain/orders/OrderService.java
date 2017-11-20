@@ -18,4 +18,8 @@ public class OrderService {
         Order orderToAdd = new Order(Date.valueOf(LocalDate.now()), itemgroup);
         orderRepository.addOrder(orderToAdd, customer);
     }
+
+    public List<Order> getOrdersByCustomerId(int customerId) {
+        return orderRepository.getOrdersByCustomerId(customerId);
+    }
 }

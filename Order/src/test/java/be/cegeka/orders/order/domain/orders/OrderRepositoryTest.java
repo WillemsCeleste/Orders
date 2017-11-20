@@ -26,27 +26,53 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @ContextConfiguration(classes = OrderApplication.class)
 @Transactional
-public class OrderRepositoryTest{
+public class OrderRepositoryTest {
 
-        @PersistenceContext
-        private EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-        @Inject
-        private OrderRepository orderRepository;
+    @Inject
+    private OrderRepository orderRepository;
+
+    private Customer customer, customer2;
+    private Order order,order2;
+
+    @Before
+    public void setUp() throws Exception {
+        customer = new Customer("naam","achternaam","email","adres","phonenumber");
+        customer2 = new Customer("naam2","achternaam2","email2","adres2","phonenumber2");
+        entityManager.persist(customer);
+        entityManager.persist(customer2);
+        order = new Order(new Date(2017 - 10 - 15),
+                Arrays.asList(new Itemgroup(1, new Date(2017 - 10 - 15),
+                        new Item("thisistoolong", "for sure", BigDecimal.valueOf(100.5)))));
+        order2 = new Order(new Date(2017 - 10 - 15),
+                Arrays.asList(new Itemgroup(1, new Date(2017 - 10 - 15),
+                        new Item("thisistoolong2", "for sure2", BigDecimal.valueOf(100.52)))));
+
+    }
+
 
     @Test
     public void addOrder() throws Exception {
-        Customer customer = new Customer("name", "noname", "blabla@gmail.com","nope", "ringringbanaphone");
+        Customer customer = new Customer("name", "noname", "blabla@gmail.com", "nope", "ringringbanaphone");
         entityManager.persist(customer);
 
         Customer customer1 = entityManager.find(Customer.class, customer.getId());
 
-        Order order = new Order(new Date(2017-10-15),
-                        Arrays.asList(new Itemgroup(1,new Date(2017-10-15),
-                        new Item("thisistoolong","for sure", BigDecimal.valueOf(100.5)))));
+        Order order = new Order(new Date(2017 - 10 - 15),
+                Arrays.asList(new Itemgroup(1, new Date(2017 - 10 - 15),
+                        new Item("thisistoolong", "for sure", BigDecimal.valueOf(100.5)))));
         orderRepository.addOrder(order, customer1);
 
         assertThat(entityManager.find(Order.class, order.getOrderId())).isEqualTo(order);
+    }
+
+
+    @Test
+    public void getOrdersByCustomerId_shouldReturnTheListOfOrdersMadeByThisCutomer() throws Exception {
+        orderRepository.addOrder(order,);
+
     }
 
     @After
