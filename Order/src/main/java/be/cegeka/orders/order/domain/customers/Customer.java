@@ -76,11 +76,23 @@ public class Customer {
 
         Customer customer = (Customer) o;
 
-        return id == customer.id;
+        if (id != customer.id) return false;
+        if (!name.equals(customer.name)) return false;
+        if (!lastName.equals(customer.lastName)) return false;
+        if (!email.equals(customer.email)) return false;
+        if (!adress.equals(customer.adress)) return false;
+        if (!phoneNumber.equals(customer.phoneNumber)) return false;
+        return customerOrders != null ? customerOrders.equals(customer.customerOrders) : customer.customerOrders == null;
     }
 
     @Override
     public int hashCode() {
-        return id;
+        int result = id;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + adress.hashCode();
+        result = 31 * result + phoneNumber.hashCode();
+        return result;
     }
 }
