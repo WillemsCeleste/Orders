@@ -18,7 +18,9 @@ import javax.transaction.Transactional;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -44,26 +46,27 @@ public class OrderRepositoryTest {
         entityManager.persist(customer);
         entityManager.persist(customer2);
         order = new Order(new Date(2017 - 10 - 15),
-                Arrays.asList(new Itemgroup(1, new Date(2017 - 10 - 15),
+                Arrays.asList(new ItemGroup(1, new Date(2017 - 10 - 15),
                         new Item("thisistoolong", "for sure", BigDecimal.valueOf(100.5)))));
         order2 = new Order(new Date(2017 - 10 - 15),
-                Arrays.asList(new Itemgroup(1, new Date(2017 - 10 - 15),
+                Arrays.asList(new ItemGroup(1, new Date(2017 - 10 - 15),
                         new Item("thisistoolong2", "for sure2", BigDecimal.valueOf(100.52)))));
 
     }
 
 
     @Test
-    public void addOrder() throws Exception {
+    public void addOrder_shouldAddAnOrderToDatabase() throws Exception {
         Customer customer = new Customer("name", "noname", "blabla@gmail.com", "nope", "ringringbanaphone");
         entityManager.persist(customer);
 
         Customer customer1 = entityManager.find(Customer.class, customer.getId());
 
         Order order = new Order(new Date(2017 - 10 - 15),
-                Arrays.asList(new Itemgroup(1, new Date(2017 - 10 - 15),
-                        new Item("thisistoolong", "for sure", BigDecimal.valueOf(100.5)))));
-        orderRepository.addOrder(order, customer1);
+                Arrays.asList(new ItemGroup(1, new Date(2017 - 10 - 15),
+                new Item("thisistoolong", "for sure", BigDecimal.valueOf(100.5)))));
+
+        orderRepository.addOrder(order, customer.getId());
 
         assertThat(entityManager.find(Order.class, order.getOrderId())).isEqualTo(order);
     }
@@ -71,9 +74,10 @@ public class OrderRepositoryTest {
 
     @Test
     public void getOrdersByCustomerId_shouldReturnTheListOfOrdersMadeByThisCutomer() throws Exception {
-        orderRepository.addOrder(order,);
-
-    }
+        orderRepository.addOrder(order,customer.getId());
+        orderRepository.addOrder(order2,customer2.getId());
+        assertThat(orderRepository.getOrdersByCustomerId(customer.getId())).containsExactly(order);
+        }
 
     @After
     public void tearDown() throws Exception {

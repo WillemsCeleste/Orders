@@ -9,15 +9,14 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 
-import static org.junit.Assert.*;
+public class ItemGroupTest {
 
-public class ItemgroupTest {
-
-    Itemgroup testItemGroup;
+    private ItemGroup testItemGroup;
+    private Item koe;
     @Before
     public void name() throws Exception {
-        Item koe = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
-        testItemGroup = new Itemgroup(5, Date.valueOf(LocalDate.of(2017, 11, 10)),koe);
+        koe = new Item ("koe", "big and loud", BigDecimal.valueOf(5.00));
+        testItemGroup = new ItemGroup(5, Date.valueOf(LocalDate.of(2017, 11, 10)),koe);
     }
 
     @Test
@@ -26,4 +25,9 @@ public class ItemgroupTest {
 
     }
 
+    @Test
+    public void getItem() throws Exception {
+
+        Assertions.assertThat(testItemGroup.getItem()).isEqualTo(koe);
+    }
 }

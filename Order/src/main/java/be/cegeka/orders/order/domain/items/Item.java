@@ -2,6 +2,7 @@ package be.cegeka.orders.order.domain.items;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table(name = "ITEMS")
@@ -64,6 +65,11 @@ public class Item {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (sellingPrice != null ? sellingPrice.hashCode() : 0);
         return result;
+    }
+
+    public Date getShippingDate() {
+
+        return null;
     }
 //    @Override
 //    public boolean equals(Object o) {
