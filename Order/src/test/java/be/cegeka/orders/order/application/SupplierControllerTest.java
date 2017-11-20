@@ -1,7 +1,7 @@
 package be.cegeka.orders.order.application;
 
 import be.cegeka.orders.order.domain.items.Item;
-import be.cegeka.orders.order.domain.orders.Itemgroup;
+import be.cegeka.orders.order.domain.orders.ItemGroup;
 import be.cegeka.orders.order.domain.orders.Order;
 import be.cegeka.orders.order.domain.orders.SupplierService;
 import org.assertj.core.api.Assertions;
