@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "ITEMGROUP")
-public class Itemgroup {
+public class ItemGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,15 +23,17 @@ public class Itemgroup {
     @JoinColumn(name = "ITEM_ID")
     private Item item;
 
-    public Itemgroup() {
+    public ItemGroup() {
     }
 
-    public Itemgroup(int amount, Date shippingDate, Item item) {
+    public ItemGroup(int amount, Date shippingDate, Item item) {
         this.amount = amount;
         this.itemgroupPrice = item.getSellingPrice().multiply(BigDecimal.valueOf(amount));
         this.shippingDate = shippingDate;
         this.item = item;
     }
+
+
 
     public int getId() {
         return iooId;
@@ -58,7 +60,7 @@ public class Itemgroup {
 //        if (this == o) return true;
 //        if (o == null || getClass() != o.getClass()) return false;
 //
-//        Itemgroup itemgroup = (Itemgroup) o;
+//        ItemGroup itemgroup = (ItemGroup) o;
 //
 //        return iooId == itemgroup.iooId;
 //    }
