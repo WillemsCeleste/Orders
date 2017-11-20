@@ -1,7 +1,5 @@
 package be.cegeka.orders.supplier.domain;
 
-import org.glassfish.jersey.internal.inject.Custom;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
