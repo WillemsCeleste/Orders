@@ -12,6 +12,7 @@ public class SupplierService {
 
 
     public StockOrder addStockOrder(StockOrder stockOrder) {
+        stockOrder.timestampThisOrder();
         return supplierRepository.addStockOrder(stockOrder);
     }
 

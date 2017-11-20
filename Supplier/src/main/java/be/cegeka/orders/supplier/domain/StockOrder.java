@@ -1,13 +1,12 @@
 package be.cegeka.orders.supplier.domain;
 
-import org.glassfish.jersey.internal.inject.Custom;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "STOCKORDERS")
-public class StockOrder {
+public class
+StockOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,5 +46,9 @@ public class StockOrder {
 
     public int getId() {
         return id;
+    }
+
+    public void timestampThisOrder() {
+        this.timestamp = LocalDateTime.now();
     }
 }
