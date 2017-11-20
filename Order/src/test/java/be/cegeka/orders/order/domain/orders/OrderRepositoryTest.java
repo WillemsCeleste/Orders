@@ -76,7 +76,7 @@ public class OrderRepositoryTest {
     public void getOrdersByCustomerId_shouldReturnTheListOfOrdersMadeByThisCutomer() throws Exception {
         orderRepository.addOrder(order,customer.getId());
         orderRepository.addOrder(order2,customer2.getId());
-        assertThat(orderRepository.getOrdersByCustomerId(customer.getId())).containsExactly(order);
+        assertThat(orderRepository.getOrdersByCustomerId(customer.getId())).contains(order);
         }
 
     @After

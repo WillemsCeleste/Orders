@@ -46,7 +46,6 @@ public class CustomerRepositoryTest {
         Customer testCustomer = new Customer("naam","achternaam", "email", "adres","nummer");
         customerRepository.addCustomer(testCustomer);
         assertThat( customerRepository.getAllCustomers() ).contains(seppe,johan,testCustomer);
-        assertThat(customerRepository.getAllCustomers().size()).isEqualTo(3);
 
     }
 

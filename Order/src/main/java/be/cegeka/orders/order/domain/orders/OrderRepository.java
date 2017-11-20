@@ -20,7 +20,7 @@ public class OrderRepository {
     }
 
     public List<Order> getOrdersByCustomerId(int customerId) {
-        return entityManager.createQuery("select o from Order o join Customer c on c.customerOrders where c.id =: customerId")
+        return entityManager.createQuery("select o from Customer c join c.customerOrders as o where c.id like :customerId")
                 .setParameter("customerId",customerId).getResultList();
     }
 
